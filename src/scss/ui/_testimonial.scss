@@ -1,0 +1,104 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.testimonial {
+  margin-bottom: 30rem;
+  min-height: 20vh;
+  background: url(../images/testimonial/ts-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  @include m.tablet {
+    min-height: 30vh;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__btn {
+    position: absolute;
+    display: none;
+    @include m.tablet { 
+      display: block;
+      font-size: 4rem;
+      right: 5rem;
+      bottom: -20rem;
+      cursor: pointer;
+    }
+    @include m.desktopxl { 
+      right: 0;
+    }
+  }
+
+  &__btn:hover &__play {
+    color: v.$whiteColor;
+  }
+
+  &__btn:hover &__play::after {
+    background-color: v.$orangeColor;
+  }
+
+  &__play {
+    position: relative;
+    color: hsla(7, 99%, 70%, 0.9);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 250ms ease;
+    &::after {
+      position: absolute;
+      background-color: v.$whiteColor;
+      content: "";
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      z-index: -1;
+      transition: all .5s ease-out;
+    }
+  }
+
+  &__box {
+    position: absolute;
+    background-color: hsla(7, 99%, 70%, 0.9);
+    color: v.$whiteColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 37.5rem;
+    padding: 2rem;
+    bottom: -45rem;
+
+    @include m.tablet {
+      left: 1rem;
+      bottom: -60rem;
+    }
+  }
+
+  &__quote {
+    font-size: 6rem;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    font-style: italic;
+
+    @include m.tablet {
+      font-size: 2.9rem;
+    }
+  }
+
+  &__author {
+    font-weight: 600;
+  }
+
+  &__work {
+    font-size: 1.4rem;
+  }
+}

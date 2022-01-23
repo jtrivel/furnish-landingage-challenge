@@ -1,0 +1,215 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.discount {
+  padding: 5rem 0;
+
+  &__grid {
+    padding: 5rem 0;
+    @include m.grid(1, 4rem);
+
+    @include m.tablet {
+      @include m.grid(2, 4rem);
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  &__box:hover &__img {
+    transform: scale(1.2);
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    padding: 2rem;
+    top: 0;
+    gap: 2rem;
+    @include m.tablet {
+      padding: 4rem;
+    }
+  }
+
+  &__heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: v.$lightBlack;
+    @include m.tablet {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: v.$primaryColor;
+    margin-top: 2rem;
+    transition: all 250ms ease-in;
+    @include m.tablet {
+      font-size: 1.6rem;
+    }
+    &:hover {
+      color: v.$orangeColor;
+    }
+  }
+}
+
+/*************** PRODUCTS **********************/
+
+.products {
+  &__grid {
+    @include m.grid(1, 4rem);
+
+    @include m.tablet {
+      @include m.grid(4, 4rem);
+    }
+
+    @include m.desktop {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__menu {
+    text-align: center;
+    border: 1px solid v.$lightGray;
+
+    @include m.tablet {
+      grid-column: 1/5;
+    }
+
+    @include m.desktop {
+      grid-column: 1/2;
+      max-width: none;
+      align-self: start;
+    }
+  }
+
+  &__heading {
+    padding: 1rem 0;
+    background-color: v.$lightGray;
+    color: v.$lightBlack;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__option {
+    padding: 1rem 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-top: 1px solid v.$lightGray;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover {
+      color: v.$orangeColor;
+    }
+
+    &-active {
+      background-color: v.$orangeColor;
+      color: v.$whiteColor;
+    }
+  }
+
+  &__cards {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 100%);
+    gap: 2rem;
+    overflow-y: auto;
+    overflow-x: scroll;
+
+    @include m.tablet {
+      grid-template-columns: repeat(3, 50%);
+      grid-row: 2/3;
+      grid-column: 1/5;
+    }
+
+    @include m.desktop {
+      grid-row: unset;
+      grid-column: auto;
+      padding: 0;
+    }
+
+    @include m.desktopxl {
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  &__top {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__offer {
+    position: absolute;
+    z-index: 10;
+    top: 2rem;
+    right: 2rem;
+    color: v.$whiteColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 6rem;
+      height: 6rem;
+      background-color: v.$orangeColor;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    transition: all 250ms ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__bottom {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: v.$lightBlack;
+  }
+  &__rating {
+    color: v.$orangeColor;
+    font-size: 1rem;
+  }
+
+  &__price {
+    color: v.$orangeColor;
+    font-weight: 600;
+  }
+
+  &__span {
+    color: v.$lightGray;
+    text-decoration: line-through 2px solid v.$primaryColor;
+  }
+}

@@ -1,0 +1,27 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+@keyframes moveTop {
+  0%{
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translatey(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes moveText {
+  0%{
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translatey(0rem);
+    opacity: 1;
+  }
+}
+

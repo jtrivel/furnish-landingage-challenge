@@ -1,0 +1,122 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.showcase {
+  padding: 5rem 0;
+
+  &__grid {
+    @include m.grid(1, 4rem);
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.desktop {
+      flex-direction: row;
+      gap: 20rem;
+    }
+  }
+
+  &__heading {
+    font-size: 3rem;
+    color: v.$lightBlack;
+    font-weight: 600;
+    @include m.tablet {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__text {
+    @include m.tablet {
+      max-width: 95%;
+    }
+    @include m.desktop {
+      max-width: 50%;
+    }
+  }
+
+  &__bottom {
+    position: relative;
+
+    &::before {
+      @include m.tablet {
+        position: absolute;
+        content: "";
+        width: 30%;
+        height: 30%;
+        right: 2rem;
+        background-color: rgba(255, 232, 229, 0.6);
+        bottom: -2rem;
+      }
+
+      @include m.desktop {
+        width: 40%;
+        right: 4rem;
+        bottom: -4rem;
+      }
+    }
+  }
+
+  &__slider {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+
+    @include m.tablet {
+      display: block;
+      top: 10%;
+      right: 0%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background-color: v.$orangeColor;
+      color: v.$whiteColor;
+      padding: 1rem 4rem;
+    }
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__image {
+    position: relative;
+    @include m.tablet {
+      padding-right: 4rem;
+    }
+    @include m.desktop {
+      padding-right: 8rem;
+    }
+  }
+
+  &__link {
+    display: block;
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    text-decoration: none;
+    color: v.$whiteColor;
+    background-color: v.$orangeColor;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    transition: all 250ms ease;
+    border: 1px solid transparent;
+    @include m.tablet {
+      bottom: -5%;
+      padding: 2rem 5rem;
+      font-size: 2rem;
+    }
+    &:hover {
+      background-color: v.$whiteColor;
+      color: v.$orangeColor;
+      border: 1px solid v.$orangeColor;
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+
+.nav {
+  background-color: v.$whiteColor;
+  width:100vw;
+  position: fixed;
+  z-index: 10000;
+  padding: 2rem 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  #check {
+    display: none;
+  }
+
+  &__icon {
+    cursor: pointer;
+    transition: all 250ms ease-in;
+    @include m.desktop { 
+      display: none;
+    }
+  }
+
+  &__icon:hover &__line::after{
+    transform: translateY(-2px);
+  }
+  &__icon:hover &__line::before{
+    transform: translateY(2px);
+  }
+
+
+  &__line {
+    display: inline-block;
+    width: 3rem;
+    height: 2px;
+    background-color: v.$primaryColor;
+    transition: all .3s ease-in;
+    position: relative;
+    &::after{
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: v.$primaryColor;
+      top: 6px;
+      left: 0;
+      transition: all .5s ease;
+    }
+    &::before{
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: v.$primaryColor;
+      bottom: 6px;
+      left: 0;
+      transition: all .5s ease;
+    }
+  }
+
+  #check:checked + &__icon &__line::after{
+    background-color: v.$orangeColor;
+    top: 0;
+    transform: rotate(-135deg)
+  }
+
+  #check:checked + &__icon  &__line {
+    background-color: transparent;
+  }
+
+  #check:checked + &__icon &__line::before{
+    background-color: v.$orangeColor;
+    top: 0;
+    transform: rotate(135deg)
+  }
+
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    position: fixed;
+    background-color: v.$whiteColor;
+    top: 7rem;
+    left: 0;
+    right: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 250ms ease-in-out;
+
+    @include m.desktop {
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      transform: none;
+      flex-direction: row;
+      gap: 3rem;
+    }
+
+  }
+
+  #check:checked ~ &__menu {
+    transform: scaleY(1);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: v.$primaryColor;
+    transition: all 250ms ease-in-out;
+    &-active {
+      color: v.$orangeColor;
+    }
+    &:hover{
+      color: v.$orangeColor;
+    }
+  }
+}

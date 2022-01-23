@@ -1,0 +1,130 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.contact {
+  padding: 5rem 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__heading {
+    text-align: center;
+    font-size: 3.2rem;
+    color: v.$lightBlack;
+    font-weight: 600;
+    margin-bottom: 5rem;
+    @include m.tablet {
+      font-size: 6rem;
+    }
+  }
+
+  &__grid {
+    background-color: v.$whiteColor;
+    border: 1px solid v.$lightGray;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 2rem;
+    @include m.grid(1, 2rem);
+    max-width: 75rem;
+
+    @include m.tablet {
+      max-width: none;
+      width: 100%;
+      @include m.grid(3, 2rem);
+    }
+
+    @include m.desktop {
+      padding: 4rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: v.$lightBlack;
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    font-weight: 500;
+  }
+
+  span {
+    color: v.$orangeColor;
+  }
+
+  &__form {
+    width: 100%;
+    background-color: v.$whiteColor;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.tablet {
+      grid-column: 2/4;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.tablet {
+      &:nth-child(1) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__input,
+  &__tarea {
+    border: 3px solid v.$lightGray;
+    width: 100%;
+    background-color: v.$fieldColor;
+    padding: 1.2rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      border: 1px solid transparent;
+    &:focus {
+      outline: none;
+      border: 1px solid v.$primaryColor;
+    }
+    &::placeholder {
+      font-size: 1.4rem;
+      @include m.tablet {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: v.$whiteColor;
+    font-weight: 500;
+    background-color: v.$orangeColor;
+    padding: 1.2rem 2rem;
+    align-self: flex-start;
+    font-size: 1.4rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-out;
+    @include m.tablet {
+      font-size: 1.6rem;
+    }
+    &:hover {
+      background-color: v.$whiteColor;
+      color: v.$orangeColor;
+      border: 1px solid v.$orangeColor;
+    }
+  }
+}

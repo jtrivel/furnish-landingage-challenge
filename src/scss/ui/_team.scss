@@ -1,0 +1,112 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.team {
+  margin-top: 5rem;
+  padding: 5rem 0;
+  background-color: v.$lightBg;
+
+  &__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__heading {
+    font-size: 2.6rem;
+    color: v.$lightBlack;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  &__subheading {
+    @include m.tablet { 
+      max-width: 50%
+    }
+  }
+
+  &__grid {
+    margin-top: 5rem;
+    @include m.grid(1,4rem);
+    justify-items: center;
+
+    @include m.tablet { 
+      @include m.grid(2,4rem);
+    }
+
+    @include m.desktop {
+      @include m.grid(4,4rem);
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+    padding-bottom: 2rem;
+    max-width: 37.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    transition: all .5s ease-out;
+    @include m.tablet { 
+      max-width: 45rem;
+    }
+
+    @include m.desktop { 
+      max-width: none;
+    }
+
+    &:hover {
+      border: 1px solid v.$orangeColor;
+      border-radius: .5rem;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  &__name {
+    font-size: 2rem;
+    color: v.$lightBlack;
+    font-weight: 600;
+    transition: all 250ms ease-out;
+    cursor: pointer;
+    &:hover{
+      color: v.$orangeColor
+    }
+  }
+
+  &__work {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: v.$veryLightBg;
+    padding: 1rem 2rem;
+    border-radius: 100rem;
+    border: 1px solid v.$orangeColor;
+  }
+
+  &__icon {
+    cursor: pointer;
+    transition: all 250ms ease-out;
+    &:hover {
+      color: v.$orangeColor;
+    }
+  }
+}
